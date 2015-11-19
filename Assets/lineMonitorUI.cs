@@ -43,7 +43,6 @@ public class lineMonitorUI : MonoBehaviour {
 	public Text versionText;
 
 	private bool stopThr = false;
-	private int delay_msec = 0;
 
 	int getDelay() { 
 		return 0;
@@ -68,7 +67,6 @@ public class lineMonitorUI : MonoBehaviour {
 
 	void Update() {
 		recvdText.text = getTextMessage (lastRcvd);
-		delay_msec = getDelay ();
 	}
 	
 	void startTread() {
@@ -94,10 +92,9 @@ public class lineMonitorUI : MonoBehaviour {
 				string text = Encoding.ASCII.GetString(data);
 				lastRcvd = text;
 
-				if (lastRcvd.Length > 0) {
-					Thread.Sleep(delay_msec);
-					client.Send(data, data.Length, anyIP); // echo
-				}
+//				if (lastRcvd.Length > 0) {
+//					client.Send(data, data.Length, anyIP); // echo
+//				}
 			}
 			catch (Exception err)
 			{
