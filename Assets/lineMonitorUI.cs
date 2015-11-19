@@ -59,7 +59,7 @@ public class lineMonitorUI : MonoBehaviour {
 
 	void Update() {
 		if (lastRcvd.Length > 0) {
-			bufferText = MyStringUtil.addToRingBuffer(bufferText, lastRcvd, /* maxline=*/6); // TODO: const int kMaxLine
+			bufferText = MyStringUtil.addToRingBuffer(bufferText, lastRcvd, maxline: 6); // TODO: const int kMaxLine
 			lastRcvd = "";
 			recvdText.text = bufferText;
 		}
