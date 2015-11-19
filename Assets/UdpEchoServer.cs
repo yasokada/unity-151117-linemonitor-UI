@@ -10,6 +10,7 @@ using System.Threading;
 using NS_MyNetUtil; // for MyNetUtil.getMyIPAddress()
 
 /*
+ * -------------------
  * v0.4 2015/08/30
  *   - separate IP address get method to MyNetUtil.cs
  * v0.3 2015/08/30
@@ -28,7 +29,7 @@ using NS_MyNetUtil; // for MyNetUtil.getMyIPAddress()
 public class UdpEchoServer : MonoBehaviour {
 	Thread rcvThr;
 	UdpClient client;
-	public int port = 6000;
+	public int port = 9000;
 
 	public const string kAppName = "UDPEcho";
 	public const string kVersion = "v0.4";
