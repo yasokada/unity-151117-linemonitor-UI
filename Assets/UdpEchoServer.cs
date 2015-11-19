@@ -10,7 +10,9 @@ using System.Threading;
 using NS_MyNetUtil; // for MyNetUtil.getMyIPAddress()
 
 /*
- * -------------------
+ * v0.1 2015/11/19
+ *   - 
+ * --------- converted from UdpEchoServer to line monitor ----------
  * v0.4 2015/08/30
  *   - separate IP address get method to MyNetUtil.cs
  * v0.3 2015/08/30
@@ -31,8 +33,8 @@ public class UdpEchoServer : MonoBehaviour {
 	UdpClient client;
 	public int port = 9000;
 
-	public const string kAppName = "UDPEcho";
-	public const string kVersion = "v0.4";
+	public const string kAppName = "line monitor UI";
+	public const string kVersion = "v0.1";
 
 	public string lastRcvd;
 
