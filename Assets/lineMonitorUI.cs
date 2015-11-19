@@ -28,7 +28,7 @@ using NS_MyNetUtil; // for MyNetUtil.getMyIPAddress()
  *   - echo back
  */
 
-public class UdpEchoServer : MonoBehaviour {
+public class lineMonitorUI : MonoBehaviour {
 	Thread rcvThr;
 	UdpClient client;
 	public int port = 9000;
