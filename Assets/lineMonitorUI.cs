@@ -40,23 +40,13 @@ public class lineMonitorUI : MonoBehaviour {
 
 	public Text myipText; // to show my IP address(port)
 	public Text recvdText;
-	public InputField delayIF; // to input delay before echo back
 	public Text versionText;
 
 	private bool stopThr = false;
 	private int delay_msec = 0;
 
 	int getDelay() { 
-		string txt = delayIF.text;
-		if (txt.Length == 0) {
-			return 0;
-		}
-		// instead of int.Parse(), Convert.XXX() will return 0 if null
-		int res = Convert.ToInt16(delayIF.text);
-		if (res < 0) {
-			return 0;
-		}
-		return res;
+		return 0;
 	}
 	
 	void Start () {
