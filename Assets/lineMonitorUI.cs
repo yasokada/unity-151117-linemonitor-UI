@@ -8,10 +8,11 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using NS_MyNetUtil; // for MyNetUtil.getMyIPAddress()
+using NS_MyStringUtil; // for addToRingBuffer()
 
 /*
  * v0.1 2015/11/19
- *   - 
+ *   - receive text with ring buffer
  * --------- converted from UdpEchoServer to line monitor ----------
  * v0.4 2015/08/30
  *   - separate IP address get method to MyNetUtil.cs
@@ -56,22 +57,9 @@ public class lineMonitorUI : MonoBehaviour {
 		startTread ();
 	}
 
-	string getTextMessage(string rcvd)
-	{
-		if (rcvd.Length == 0) {
-			return "";
-		}
-		string msg = 
-			"rx: " + rcvd + System.Environment.NewLine
-			+ "tx: " + rcvd;
-		return msg;
-	}
-
 	void Update() {
-//		recvdText.text = getTextMessage (lastRcvd);
-
 		if (lastRcvd.Length > 0) {
-			bufferText = bufferText + lastRcvd;
+			bufferText = MyStringUtil.addToRingBuffer(bufferText, lastRcvd, /* maxline=*/6); // TODO: const int kMaxLine
 			lastRcvd = "";
 			recvdText.text = bufferText;
 		}
