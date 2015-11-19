@@ -37,6 +37,7 @@ public class lineMonitorUI : MonoBehaviour {
 	public const string kVersion = "v0.1";
 
 	public string lastRcvd;
+	private string bufferText;
 
 	public Text myipText; // to show my IP address(port)
 	public Text recvdText;
@@ -49,6 +50,7 @@ public class lineMonitorUI : MonoBehaviour {
 	}
 	
 	void Start () {
+		bufferText = "";
 		versionText.text = kAppName + " " + kVersion;
 		myipText.text = MyNetUtil.getMyIPAddress() + " (" + port.ToString () + ")";
 		startTread ();
@@ -66,7 +68,13 @@ public class lineMonitorUI : MonoBehaviour {
 	}
 
 	void Update() {
-		recvdText.text = getTextMessage (lastRcvd);
+//		recvdText.text = getTextMessage (lastRcvd);
+
+		if (lastRcvd.Length > 0) {
+			bufferText = bufferText + lastRcvd;
+			lastRcvd = "";
+			recvdText.text = bufferText;
+		}
 	}
 	
 	void startTread() {
