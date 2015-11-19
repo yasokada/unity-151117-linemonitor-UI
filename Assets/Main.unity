@@ -465,7 +465,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: MyIP
 --- !u!222 &989666726
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -765,7 +765,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 'RcvdText
+
+'
 --- !u!222 &1456410196
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -831,7 +833,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: MyVersion
 --- !u!222 &1607956949
 CanvasRenderer:
   m_ObjectHideFlags: 0
