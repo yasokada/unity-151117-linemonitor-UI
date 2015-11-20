@@ -11,6 +11,8 @@ using NS_MyNetUtil; // for MyNetUtil.getMyIPAddress()
 using NS_MyStringUtil; // for addToRingBuffer()
 
 /*
+ * v0.2 2015/11/21
+ *   - DDD
  * v0.1 2015/11/19
  *   - receive text with ring buffer
  * --------- converted from UdpEchoServer to line monitor ----------
@@ -35,7 +37,7 @@ public class lineMonitorUI : MonoBehaviour {
 	public int port = 9000;
 
 	public const string kAppName = "line monitor UI";
-	public const string kVersion = "v0.1";
+	public const string kVersion = "v0.2";
 
 	public string lastRcvd;
 	private string bufferText;
