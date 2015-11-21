@@ -12,6 +12,7 @@ using NS_MyStringUtil; // for addToRingBuffer()
 
 /*
  * v0.3 2015/11/21
+ *   - can add time info (sec.msec) to the received text
  *   - can convert non-ASCII char to ASCII char (e.g. <CR>)
  * 	 - add toggle Upd to turn on/off text update
  * v0.2 2015/11/21
@@ -52,13 +53,30 @@ public class lineMonitorUI : MonoBehaviour {
 	public Text versionText;
 	public Toggle TG_update; // to turn on/off text update
 	public Toggle TG_ctrl; // to convert non-ASCII char to ASCII char (e.g. <CR>
+	public Toggle TG_time; // to add current time (sec+msec) or not
 
 	private bool stopThr = false;
 
 	int getDelay() { 
 		return 0;
 	}
-	
+
+	long get_msec() {
+		System.DateTime now = System.DateTime.Now;
+		System.DateTime nowMsec0 = new DateTime (now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second);
+		long TotalMsec = (long)((DateTime.Now - nowMsec0).TotalMilliseconds);
+		
+		return TotalMsec;
+	}
+
+	string get_sec_msec_string() {
+		int sec = System.DateTime.Now.Second;
+		long msec = get_msec ();
+
+		string res = string.Format ("{0:00}", sec) + "." + string.Format ("{0:000}", msec);
+		return res;
+	}
+
 	void Start () {
 		bufferText = "";
 		versionText.text = kAppName + " " + kVersion;
@@ -68,6 +86,9 @@ public class lineMonitorUI : MonoBehaviour {
 	
 	void Update() {
 		if (lastRcvd.Length > 0) {
+			if (TG_time.isOn) {
+				lastRcvd = get_sec_msec_string() + "," + lastRcvd;
+			}
 			if (TG_ctrl.isOn) {
 				lastRcvd = MyStringUtil.replaceNonAsciiToAscii(lastRcvd);
 			}
