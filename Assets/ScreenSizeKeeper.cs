@@ -2,9 +2,14 @@
 using System.Collections;
 using UnityEngine.UI;
 
+/*
+ * v0.2 2015/11/21
+ *   - change myStandard from [Button] to [Text]
+*/
+
 public class ScreenSizeKeeper : MonoBehaviour {
 
-	public Button myButton; // set UI>Button whose width is used as standard
+	public Text myStandard; // set component whose width is used as standard
 
 	bool isRunningOnAndroid() {
 		return (Application.platform == RuntimePlatform.Android);
@@ -15,8 +20,8 @@ public class ScreenSizeKeeper : MonoBehaviour {
 			return;
 		}
 		float aspect = (float)Screen.height / (float)Screen.width;
-		float buttonRatio = 0.5f; // 50%
-		int buttonWidth = (int)myButton.GetComponent<RectTransform> ().rect.width;
+		float buttonRatio = 0.9f; // 90%
+		int buttonWidth = (int)myStandard.GetComponent<RectTransform> ().rect.width;
 		float newWidth, newHeight;
 		
 		newWidth = buttonWidth / buttonRatio;
