@@ -20,7 +20,7 @@ public class ScreenSizeKeeper : MonoBehaviour {
 			return;
 		}
 		float aspect = (float)Screen.height / (float)Screen.width;
-		float buttonRatio = 0.9f; // 90%
+		float buttonRatio = 0.95f; // 95%
 		int buttonWidth = (int)myStandard.GetComponent<RectTransform> ().rect.width;
 		float newWidth, newHeight;
 		
