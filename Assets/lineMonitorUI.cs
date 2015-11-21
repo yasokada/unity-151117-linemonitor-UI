@@ -11,6 +11,8 @@ using NS_MyNetUtil; // for MyNetUtil.getMyIPAddress()
 using NS_MyStringUtil; // for addToRingBuffer()
 
 /*
+ * v0.3 2015/11/21
+ * 	 - add toggle Upd to turn on/off text update
  * v0.2 2015/11/21
  *   - can keep 32-1 lines of UDP packet
  *   - add setting for android (304SH)
@@ -38,7 +40,7 @@ public class lineMonitorUI : MonoBehaviour {
 	public int port = 9000;
 
 	public const string kAppName = "line monitor UI";
-	public const string kVersion = "v0.2";
+	public const string kVersion = "v0.3";
 	public const int kMaxLine = 32;
 
 	public string lastRcvd;
@@ -47,6 +49,7 @@ public class lineMonitorUI : MonoBehaviour {
 	public Text myipText; // to show my IP address(port)
 	public Text recvdText;
 	public Text versionText;
+	public Toggle TG_update;
 
 	private bool stopThr = false;
 
@@ -63,9 +66,13 @@ public class lineMonitorUI : MonoBehaviour {
 
 	void Update() {
 		if (lastRcvd.Length > 0) {
-			bufferText = MyStringUtil.addToRingBuffer(bufferText, lastRcvd, kMaxLine);
-			lastRcvd = "";
-			recvdText.text = bufferText;
+			if (TG_update.isOn) {
+				bufferText = MyStringUtil.addToRingBuffer(bufferText, lastRcvd, kMaxLine);
+				lastRcvd = "";
+				recvdText.text = bufferText;
+			} else {
+				lastRcvd = "";
+			}
 		}
 	}
 	
