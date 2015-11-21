@@ -12,7 +12,8 @@ using NS_MyStringUtil; // for addToRingBuffer()
 
 /*
  * v0.2 2015/11/21
- *   - DDD
+ *   - can keep 32-1 lines of UDP packet
+ *   - add setting for android (304SH)
  * v0.1 2015/11/19
  *   - receive text with ring buffer
  * --------- converted from UdpEchoServer to line monitor ----------
@@ -38,6 +39,7 @@ public class lineMonitorUI : MonoBehaviour {
 
 	public const string kAppName = "line monitor UI";
 	public const string kVersion = "v0.2";
+	public const int kMaxLine = 32;
 
 	public string lastRcvd;
 	private string bufferText;
@@ -61,7 +63,7 @@ public class lineMonitorUI : MonoBehaviour {
 
 	void Update() {
 		if (lastRcvd.Length > 0) {
-			bufferText = MyStringUtil.addToRingBuffer(bufferText, lastRcvd, maxline: 6); // TODO: const int kMaxLine
+			bufferText = MyStringUtil.addToRingBuffer(bufferText, lastRcvd, kMaxLine);
 			lastRcvd = "";
 			recvdText.text = bufferText;
 		}
