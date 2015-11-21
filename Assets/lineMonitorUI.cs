@@ -12,6 +12,7 @@ using NS_MyStringUtil; // for addToRingBuffer()
 
 /*
  * v0.3 2015/11/21
+ *   - can convert non-ASCII char to ASCII char (e.g. <CR>)
  * 	 - add toggle Upd to turn on/off text update
  * v0.2 2015/11/21
  *   - can keep 32-1 lines of UDP packet
@@ -49,7 +50,8 @@ public class lineMonitorUI : MonoBehaviour {
 	public Text myipText; // to show my IP address(port)
 	public Text recvdText;
 	public Text versionText;
-	public Toggle TG_update;
+	public Toggle TG_update; // to turn on/off text update
+	public Toggle TG_ctrl; // to convert non-ASCII char to ASCII char (e.g. <CR>
 
 	private bool stopThr = false;
 
@@ -63,9 +65,12 @@ public class lineMonitorUI : MonoBehaviour {
 		myipText.text = MyNetUtil.getMyIPAddress() + " (" + port.ToString () + ")";
 		startTread ();
 	}
-
+	
 	void Update() {
 		if (lastRcvd.Length > 0) {
+			if (TG_ctrl.isOn) {
+				lastRcvd = MyStringUtil.replaceNonAsciiToAscii(lastRcvd);
+			}
 			if (TG_update.isOn) {
 				bufferText = MyStringUtil.addToRingBuffer(bufferText, lastRcvd, kMaxLine);
 				lastRcvd = "";
