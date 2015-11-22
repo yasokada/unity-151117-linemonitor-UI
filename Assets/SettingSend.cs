@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 
+using System.Text.RegularExpressions; // for Regex
+
 // for UDP send
 using System;
 using System.Text;
@@ -33,6 +35,12 @@ public class SettingSend : MonoBehaviour {
 		s_udp_client.Client.Blocking = false;
 	}
 
+	void UDP_send(string ipadr, string portStr, string text) {
+		int portInt = int.Parse(new Regex("[0-9]+").Match(portStr).Value); // from string to integer
+		byte[] data = System.Text.Encoding.ASCII.GetBytes(text); // from string to byte[]
+		s_udp_client.Send (data, data.Length, ipadr, portInt);
+	}
+
 	public void SendButtonClick() {
 		Debug.Log ("SendButton");
 
@@ -43,6 +51,6 @@ public class SettingSend : MonoBehaviour {
 	}
 }
 
-// byte[] data = System.Text.Encoding.ASCII.GetBytes(text);
 
+// client.Send (data, data.Length, ipadr, port);
 

@@ -2393,6 +2393,7 @@ MonoBehaviour:
   IF_ipadr: {fileID: 1549111261}
   IF_port: {fileID: 1569786341}
   IF_combaud: {fileID: 1750954259}
+  s_udp_isNotInit: 1
 --- !u!4 &1552531792
 Transform:
   m_ObjectHideFlags: 0
