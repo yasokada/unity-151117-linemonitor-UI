@@ -18,4 +18,3 @@ public class SettingSend : MonoBehaviour {
 	}
 }
 
-// TODO: 1> remove Debug.Log() True/False defined somewhere

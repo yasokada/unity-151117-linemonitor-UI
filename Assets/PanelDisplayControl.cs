@@ -55,6 +55,6 @@ public class PanelDisplayControl : MonoBehaviour {
 	public void ToggleValueChanged(int idx_st1) {
 		bool isOn = getIsOn (idx_st1);
 		DisplayPanel (idx_st1, isOn);
-		Debug.Log (isOn.ToString ());
+//		Debug.Log (isOn.ToString ());
 	}
 }
