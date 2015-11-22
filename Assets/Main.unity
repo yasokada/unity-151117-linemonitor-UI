@@ -2390,6 +2390,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e701191d4d41f46b2b948c70c6db7e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IF_ipadr: {fileID: 1549111261}
+  IF_port: {fileID: 1569786341}
+  IF_combaud: {fileID: 1750954259}
 --- !u!4 &1552531792
 Transform:
   m_ObjectHideFlags: 0
