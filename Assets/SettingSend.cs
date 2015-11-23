@@ -41,14 +41,24 @@ public class SettingSend : MonoBehaviour {
 		s_udp_client.Send (data, data.Length, ipadr, portInt);
 	}
 
+	void command_setCombaud(string combaud) {
+		string cmdstr = "set,combaud," + combaud + "\r\n";
+		UDP_send (IF_ipadr.text, IF_port.text, cmdstr);
+	}
+
+	void command_setMonitor(string monip, string monport) {
+		string cmdstr = "set,mon," + monip + "," + monport;
+		UDP_send (IF_ipadr.text, IF_port.text, cmdstr);
+	}
+
 	public void SendButtonClick() {
 		if (s_udp_initialized == false) {
 			s_udp_initialized = true;
 			UDP_init ();
 		}
+		command_setMonitor (IF_ipadr.text, IF_port.text);
+		command_setCombaud (IF_combaud.text);
 	}
 }
 
-
-// client.Send (data, data.Length, ipadr, port);
 
