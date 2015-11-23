@@ -62,9 +62,21 @@ public class SettingSend : MonoBehaviour {
 			s_udp_initialized = true;
 			UDP_init ();
 		}
-//		command_setMonitor (IF_ipadr.text, IF_port.text);
 		command_setCombaud (IF_combaud.text);
 	}
+
+	public void SendMeClick() {
+		if (s_udp_initialized == false) {
+			s_udp_initialized = true;
+			UDP_init ();
+		}
+
+		// TODO: 0> get ipadr and port from MyIP Input Field
+		string myIpadr = "192.168.10.4";
+		string myPort = "9000";
+		command_setMonitor (myIpadr, myPort);
+	}
+
 }
 
 
