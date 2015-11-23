@@ -12,6 +12,7 @@ using NS_MyStringUtil; // for addToRingBuffer()
 
 /*
  * v0.4 2015/11/23
+ *   - add Panel for setting combaud and monitor(ip,port)[Send Me]
  *   - rename port to m_port
  * v0.3 2015/11/21
  *   - can add time info (sec.msec) to the received text

@@ -19,7 +19,7 @@ using System.Net.Sockets;
 
 public class SettingSend : MonoBehaviour {
 	
-	public const string kCommandIpAddressPrefix = "192.168.10.";
+	public const string kCommandIpAddressPrefix = "192.168.10.7";
 	public const string kDefaultCommandPort = "7000";
 	public const string kDefaultComBaud = "9600";
 
