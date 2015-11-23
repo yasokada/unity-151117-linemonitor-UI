@@ -10,6 +10,10 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 
+/*
+ * v0.1 2015/11/23
+ */
+
 public class SettingSend : MonoBehaviour {
 	
 	public const string kCommandIpAddressPrefix = "192.168.10.";
@@ -53,7 +57,7 @@ public class SettingSend : MonoBehaviour {
 		UDP_send (IF_ipadr.text, IF_port.text, cmdstr);
 	}
 
-	public void SendButtonClick() {
+	public void SendSettingClick() {
 		if (s_udp_initialized == false) {
 			s_udp_initialized = true;
 			UDP_init ();
