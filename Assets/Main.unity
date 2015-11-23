@@ -669,7 +669,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: IP adrs
+  m_Text: cmd IP adrs
 --- !u!222 &579952827
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1463,7 +1463,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: port
+  m_Text: cmd port
 --- !u!222 &1040704623
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2393,7 +2393,7 @@ MonoBehaviour:
   IF_ipadr: {fileID: 1549111261}
   IF_port: {fileID: 1569786341}
   IF_combaud: {fileID: 1750954259}
-  s_udp_isNotInit: 1
+  s_udp_initialized: 0
 --- !u!4 &1552531792
 Transform:
   m_ObjectHideFlags: 0
@@ -3128,7 +3128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1937448553
 RectTransform:
   m_ObjectHideFlags: 0
