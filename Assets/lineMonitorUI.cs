@@ -45,7 +45,7 @@ public class lineMonitorUI : MonoBehaviour {
 	public int m_port = 9000;
 
 	public const string kAppName = "line monitor UI";
-	public const string kVersion = "v0.3";
+	public const string kVersion = "v0.4";
 	public const int kMaxLine = 32;
 
 	public string lastRcvd;
