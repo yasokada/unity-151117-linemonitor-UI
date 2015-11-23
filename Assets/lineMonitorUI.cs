@@ -11,6 +11,8 @@ using NS_MyNetUtil; // for MyNetUtil.getMyIPAddress()
 using NS_MyStringUtil; // for addToRingBuffer()
 
 /*
+ * v0.4 2015/11/23
+ *   - rename port to m_port
  * v0.3 2015/11/21
  *   - can add time info (sec.msec) to the received text
  *   - can convert non-ASCII char to ASCII char (e.g. <CR>)
@@ -39,7 +41,7 @@ using NS_MyStringUtil; // for addToRingBuffer()
 public class lineMonitorUI : MonoBehaviour {
 	Thread rcvThr;
 	UdpClient client;
-	public int port = 9000;
+	public int m_port = 9000;
 
 	public const string kAppName = "line monitor UI";
 	public const string kVersion = "v0.3";
@@ -80,7 +82,7 @@ public class lineMonitorUI : MonoBehaviour {
 	void Start () {
 		bufferText = "";
 		versionText.text = kAppName + " " + kVersion;
-		myipText.text = MyNetUtil.getMyIPAddress() + " (" + port.ToString () + ")";
+		myipText.text = MyNetUtil.getMyIPAddress() + " (" + m_port.ToString () + ")";
 		startTread ();
 	}
 	
@@ -115,7 +117,7 @@ public class lineMonitorUI : MonoBehaviour {
 	
 	private void FuncRcvData()
 	{
-		client = new UdpClient (port);
+		client = new UdpClient (m_port);
 		client.Client.ReceiveTimeout = 300; // msec
 		client.Client.Blocking = false;
 		while (stopThr == false) {
