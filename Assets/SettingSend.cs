@@ -30,10 +30,14 @@ public class SettingSend : MonoBehaviour {
 	public bool s_udp_initialized = false;
 	UdpClient s_udp_client; 
 
+	private GameObject m_lineMonitorGO;
+
 	void Start () {
 		IF_ipadr.text = kCommandIpAddressPrefix;
 		IF_port.text = kDefaultCommandPort;
 		IF_combaud.text = kDefaultComBaud;
+
+		m_lineMonitorGO = GameObject.Find ("lineMonitorGO");
 	}
 
 	void UDP_init() {
@@ -74,10 +78,12 @@ public class SettingSend : MonoBehaviour {
 			UDP_init ();
 		}
 
-		// TODO: 0> get my port from lineMonitorUI.cs
 		string myIpadr = MyNetUtil.getMyIPAddress ();
-		string myPort = "9000";
-		command_setMonitor (myIpadr, myPort);
+
+		lineMonitorUI lm = m_lineMonitorGO.GetComponent<lineMonitorUI> ();
+		int myPort = lm.m_port;
+
+		command_setMonitor (myIpadr, myPort.ToString());
 	}
 
 }
