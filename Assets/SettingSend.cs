@@ -20,7 +20,7 @@ public class SettingSend : MonoBehaviour {
 	public InputField IF_port;
 	public InputField IF_combaud;
 
-	public bool s_udp_isNotInit = true; // TODO: 1> rename to positive variable
+	public bool s_udp_initialized = false;
 	UdpClient s_udp_client; 
 
 	void Start () {
@@ -42,10 +42,8 @@ public class SettingSend : MonoBehaviour {
 	}
 
 	public void SendButtonClick() {
-		Debug.Log ("SendButton");
-
-		if (s_udp_isNotInit == true) {
-			s_udp_isNotInit = false;
+		if (s_udp_initialized == false) {
+			s_udp_initialized = true;
 			UDP_init ();
 		}
 	}
