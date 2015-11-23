@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 using System.Text.RegularExpressions; // for Regex
 
+using NS_MyNetUtil; // for MyNetUtil.getMyIPAddress()
+
+
 // for UDP send
 using System;
 using System.Text;
@@ -71,8 +74,8 @@ public class SettingSend : MonoBehaviour {
 			UDP_init ();
 		}
 
-		// TODO: 0> get ipadr and port from MyIP Input Field
-		string myIpadr = "192.168.10.4";
+		// TODO: 0> get my port from lineMonitorUI.cs
+		string myIpadr = MyNetUtil.getMyIPAddress ();
 		string myPort = "9000";
 		command_setMonitor (myIpadr, myPort);
 	}
