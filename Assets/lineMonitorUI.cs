@@ -11,6 +11,8 @@ using NS_MyNetUtil; // for MyNetUtil.getMyIPAddress()
 using NS_MyStringUtil; // for addToRingBuffer()
 
 /*
+ * v0.5 2015 Dec. 12
+ *   - add TG_oneline to show monitor strings in one line (by trimming the exceeded character strings)
  * v0.4 2015/11/23
  *   - add Panel for setting combaud and monitor(ip,port)[Send Me]
  *   - rename port to m_port
@@ -47,6 +49,7 @@ public class lineMonitorUI : MonoBehaviour {
 	public const string kAppName = "line monitor UI";
 	public const string kVersion = "v0.4";
 	public const int kMaxLine = 32;
+	public const int kOneLineLength = 50; // for vertical display on 304SH
 
 	public string lastRcvd;
 	private string bufferText;
@@ -57,6 +60,7 @@ public class lineMonitorUI : MonoBehaviour {
 	public Toggle TG_update; // to turn on/off text update
 	public Toggle TG_ctrl; // to convert non-ASCII char to ASCII char (e.g. <CR>
 	public Toggle TG_time; // to add current time (sec+msec) or not
+	public Toggle TG_oneline; // to trimming for one-line display
 
 	private bool stopThr = false;
 
@@ -94,6 +98,11 @@ public class lineMonitorUI : MonoBehaviour {
 			}
 			if (TG_ctrl.isOn) {
 				lastRcvd = MyStringUtil.replaceNonAsciiToAscii(lastRcvd);
+			}
+			if (TG_oneline.isOn) {
+				lastRcvd = lastRcvd.Substring(0, kOneLineLength - 3); // 2: for "..."
+				lastRcvd = lastRcvd + "...";
+				lastRcvd = lastRcvd + System.Environment.NewLine;
 			}
 			if (TG_update.isOn) {
 				bufferText = MyStringUtil.addToRingBuffer(bufferText, lastRcvd, kMaxLine);
@@ -144,4 +153,5 @@ public class lineMonitorUI : MonoBehaviour {
 	}
 }
 
+// TODO: 0m > bug > oneline > following lines are diplayed > <LF><LF><LF><LF><LF><LF><LF><LF><LF><LF><LF><LF><LF>...
 
