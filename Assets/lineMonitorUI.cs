@@ -47,7 +47,7 @@ public class lineMonitorUI : MonoBehaviour {
 	public int m_port = 9000;
 
 	public const string kAppName = "line monitor UI";
-	public const string kVersion = "v0.4";
+	public const string kVersion = "v0.5";
 	public const int kMaxLine = 32;
 	public const int kOneLineLength = 50; // for vertical display on 304SH
 
@@ -93,19 +93,25 @@ public class lineMonitorUI : MonoBehaviour {
 	
 	void Update() {
 		if (lastRcvd.Length > 0) {
+			bool addNewline = false;
 			if (TG_time.isOn) {
 				lastRcvd = get_sec_msec_string() + "," + lastRcvd;
+			}
+			if (TG_oneline.isOn) {
+				if (lastRcvd.Length > (kOneLineLength - 3)) { // 3: for "..."
+					lastRcvd = lastRcvd.Substring(0, kOneLineLength - 3); // 3: for "..."
+					lastRcvd = lastRcvd + "...";
+					addNewline = true;
+				}
 			}
 			if (TG_ctrl.isOn) {
 				lastRcvd = MyStringUtil.replaceNonAsciiToAscii(lastRcvd);
 			}
-			if (TG_oneline.isOn) {
-				lastRcvd = lastRcvd.Substring(0, kOneLineLength - 3); // 2: for "..."
-				lastRcvd = lastRcvd + "...";
-				lastRcvd = lastRcvd + System.Environment.NewLine;
-			}
 			if (TG_update.isOn) {
 				bufferText = MyStringUtil.addToRingBuffer(bufferText, lastRcvd, kMaxLine);
+				if (addNewline) {
+					bufferText = bufferText + System.Environment.NewLine;
+				}
 				lastRcvd = "";
 				recvdText.text = bufferText;
 			} else {
