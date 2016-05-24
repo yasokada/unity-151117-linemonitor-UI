@@ -11,6 +11,8 @@ using NS_MyNetUtil; // for MyNetUtil.getMyIPAddress()
 using NS_MyStringUtil; // for addToRingBuffer()
 
 /*
+ * v0.7 2016 May 24
+ *   - fix bug > replace gitignore to those at github (excluding ProjectSettings/ from ignore)
  * v0.6 2015 Dec. 12
  * 	 - change locations of each component downward for Windows 1024 x 768 screen
  * v0.5 2015 Dec. 12
